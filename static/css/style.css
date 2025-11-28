@@ -1,0 +1,159 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    min-height: 100vh;
+    direction: rtl;
+    line-height: 1.6;
+}
+
+header {
+    background: rgba(15,12,41,0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,215,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.8rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #ffd700, #ff8b5cf6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user-info {
+    background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(139,92,246,0.25));
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,215,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-shadow: 0 0 30px rgba(255,215,0,0.4);
+}
+
+.coin-icon {
+    width: 44px;
+    height: 44px;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#coin-count {
+    color: #ffd700;
+    text-shadow: 0 0 15px #ffd700;
+    font-size: 1.9rem;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.2rem;
+    flex-wrap: wrap;
+    background: rgba(0,0,0,0.4);
+}
+
+.tab-btn {
+    padding: 1rem 2.8rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,215,0,0.4);
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.tab-btn:hover {
+    background: linear-gradient(45deg, #ffd700, #ff8c00);
+    color: #000;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(255,215,0,0.5);
+}
+
+main {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quest-card, .reward-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    border: 1px solid rgba(255,215,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+h2, h3 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    background: linear-gradient(45deg, #ffd700, #ff8c00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+button, .big-btn {
+    background: linear-gradient(45deg, #ffd700, #ff6b00);
+    color: #000;
+    border: none;
+    padding: 1.2rem 4rem;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 900;
+    cursor: pointer;
+    margin: 1rem;
+    box-shadow: 0 10px 25px rgba(255,215,0,0.4);
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(255,215,0,0.6);
+}
+
+.complete-btn { background: linear-gradient(45deg, #00ff88, #00c853); }
+.completed-btn { background: #444; cursor: not-allowed; }
+
+.alert {
+    background: rgba(220, 38, 38, 0.3);
+    padding: 1.2rem;
+    border-radius: 16px;
+    margin: 1.5rem auto;
+    max-width: 600px;
+}
+
+@media (max-width: 768px) {
+    .logo { font-size: 2.2rem; }
+    .user-info { font-size: 1.1rem; padding: 0.7rem 1.5rem; }
+    .tab-btn { padding: 0.9rem 2rem; font-size: 1.1rem; }
+    #coin-count { font-size: 1.5rem; }
+}
