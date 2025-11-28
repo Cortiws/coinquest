@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}فروشگاه{% endblock %}
+{% block content %}
+<div class="shop-container">
+    <h2>فروشگاه جوایز</h2>
+    <div class="rewards-grid">
+        {% for reward in rewards %}
+        <div class="reward-card">
+            <h3>{{ reward.name }}</h3>
+            <div class="price-tag">
+                <img src="{{ url_for('static', filename='icons/coin.png') }}" alt="کوین" width="24">
+                {{ reward.price }} کوین
+            </div>
+            <button class="buy-btn" onclick="buyReward({{ reward.id }}, {{ reward.price }})">
+                خرید
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+function buyReward(id, price) {
+    if (confirm('آیا می‌خوای این جایزه رو با ' + price + ' کوین بخری؟')) {
+        fetch('/api/buy_reward', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ reward_id: id, price: price })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('خرید با موفقیت انجام شد!');
+                location.reload();
+            } else {
+                alert(data.message || 'کوین کافی نداری!');
+            }
+        })
+        .catch(() => alert('خطا در ارتباط'));
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}داشبورد{% endblock %}
+{% block content %}
+<div class="dashboard">
+    <h2>داشبورد شما</h2>
+    <p>کوین کل: {{ stats.coins }}</p>
+    <p>تاریخ عضویت: {{ stats.created_at }}</p>
+    <h3>آخرین امتیازها:</h3>
+    <ul>
+        {% for score in scores %}
+        <li>{{ score.game_name }}: {{ score.score }} ({{ score.timestamp }})</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

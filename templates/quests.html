@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}کوئست‌ها{% endblock %}
+{% block content %}
+<div class="quests-container">
+    <h2>کوئست‌ها و ماموریت‌ها</h2>
+
+    {% for quest in quests %}
+    <div class="quest-card">
+        <h3>{{ quest.name }}</h3>
+        <p>{{ quest.description }}</p>
+        <p>جایزه: <strong>{{ quest.reward }} کوین</strong></p>
+
+        {% if quest.completed_by_user and current_user.id|string in quest.completed_by_user.split() %}
+            <button class="completed-btn" disabled>تکمیل شده ✓</button>
+        {% else %}
+            <button class="complete-btn" onclick="completeQuest({{ quest.id }}, {{ quest.reward }})">
+                تکمیل کن
+            </button>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function completeQuest(id, reward) {
+    fetch('/api/complete_quest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quest_id: id })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('عالی! +' + reward + ' کوین دریافت کردی');
+            location.reload();
+        } else {
+            alert('این کوئست قبلاً انجام شده!');
+        }
+    })
+    .catch(() => alert('خطا در ارتباط با سرور'));
+}
+</script>
+{% endblock %}

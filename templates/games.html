@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}بازی‌ها{% endblock %}
+{% block content %}
+<div class="games-container">
+    <h2>بازی‌ها</h2>
+    <div class="game" id="click-game">
+        <h3>کلیک سریع (هدف: ۵۰ کلیک)</h3>
+        <button id="click-btn">کلیک!</button>
+        <p>امتیاز: <span id="click-score">0</span></p>
+    </div>
+    <div class="game" id="guess-game">
+        <h3>حدس عدد (۱-۱۰۰)</h3>
+        <input type="number" id="guess-input" min="1" max="100">
+        <button id="guess-btn">حدس بزن</button>
+        <p id="guess-feedback"></p>
+    </div>
+    <!-- Memory game ساده – بعداً کامل‌تر می‌کنیم -->
+    <div class="game" id="memory-game">
+        <h3>خاطره‌بازی (۵ کارت)</h3>
+        <button id="memory-start">شروع</button>
+        <div id="memory-board"></div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/games.js') }}"></script>
+{% endblock %}
